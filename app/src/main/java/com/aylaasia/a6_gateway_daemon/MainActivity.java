@@ -21,17 +21,14 @@ public class MainActivity extends Activity {
         String sourceConfigFile = "/data/data/com.aylaasia.a6_gateway/files/devd.conf.startup";
         String targetConfigFile = "/storage/emulated/0/devd.conf.startup";
 
-        if (checkAgentStartupFile(targetConfigFile)) {
-            if (BuildConfig.DEBUG)
-                Log.d(TAG, "delete devd.conf.startup file!");
-
-            deleteSingleFile(targetConfigFile);
-            deleteSingleFile(sourceConfigFile);
-        } else {
+        if (checkAgentStartupFile(sourceConfigFile)) {
             if (BuildConfig.DEBUG)
                 Log.d(TAG, "copy devd.conf.startup file to sdcard dir!");
 
             copyFile(sourceConfigFile, targetConfigFile);
+        } else {
+            if (BuildConfig.DEBUG)
+                Log.d(TAG, "the devd.conf.startup file does not exist!");
         }
     }
 
