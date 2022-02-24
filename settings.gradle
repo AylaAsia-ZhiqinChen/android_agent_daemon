@@ -1,2 +1,3 @@
 rootProject.name = "android_agent_daemon"
-include ':app'
+include ':cp'
+include ':delete'
